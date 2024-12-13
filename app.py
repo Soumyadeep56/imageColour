@@ -10,18 +10,14 @@ import uuid
 app = Flask(__name__)
 
 # Set paths for uploaded and output images
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'static/uploads')
-OUTPUT_FOLDER = os.path.join(os.getcwd(), 'static/outputs')
+UPLOAD_FOLDER = '/home/deep23/mysite/static/uploads'
+OUTPUT_FOLDER = '/home/deep23/mysite/static/outputs'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 # Load pre-trained KMeans model
-MODEL_PATH = os.path.join(os.getcwd(), 'kmeans_model.pkl')
-try:
-    kmeans = joblib.load(MODEL_PATH)
-except Exception as e:
-    print(f"Error loading model: {e}")
-    kmeans = None
+MODEL_PATH = '/home/deep23/mysite/kmeans_model.pkl'
+kmeans = joblib.load(MODEL_PATH)
 
 def process_image(image_path, clusters=5):
     """
@@ -88,5 +84,6 @@ def index():
 
     return render_template('index.html')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+def start_app():
+    return app
+
