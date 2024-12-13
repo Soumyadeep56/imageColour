@@ -6,3 +6,4 @@ imutils==0.5.4
 opencv-python-headless==4.8.0.74
 setuptools>=70.0.0
 wheel>=0.44.0
+gunicorn
